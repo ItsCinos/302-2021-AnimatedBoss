@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424222406702161832}
   - component: {fileID: 424222406702161835}
+  - component: {fileID: 127565564770825909}
   m_Layer: 0
   m_Name: IK Foot Right
   m_TagString: Untagged
@@ -146,13 +147,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424222406702161833}
-  m_LocalRotation: {x: -0.3835271, y: -0.6467058, z: -0.33615145, w: -0.56716913}
+  m_LocalRotation: {x: -0.0003279981, y: 0.6594245, z: 0.00028770737, w: 0.75177073}
   m_LocalPosition: {x: 0.86408377, y: 0.35579824, z: -0.3031087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 424222407326921391}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.05, y: 82.512, z: 0}
 --- !u!114 &424222406702161835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,20 @@ MonoBehaviour:
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
-  m_SettingsGUIToggle: 0
+  m_SettingsGUIToggle: 1
+--- !u!114 &127565564770825909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424222406702161833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4d501dc941efd41bc70db468b2b54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepOffset: 0
 --- !u!1 &424222406782464819
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +327,8 @@ GameObject:
   m_Component:
   - component: {fileID: 424222407739914488}
   - component: {fileID: 424222407739914491}
+  - component: {fileID: 1898251171789425550}
+  - component: {fileID: 6489463044077331597}
   m_Layer: 0
   m_Name: Hips Constraint
   m_TagString: Untagged
@@ -357,6 +373,67 @@ MonoBehaviour:
     m_Space: 2
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 0
+--- !u!114 &1898251171789425550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424222407739914489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10bdb03db33fb148b858a4a3b646cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weight: 0.093
+  m_Data:
+    m_ConstrainedObject: {fileID: 424222407739914488}
+    m_SourceObjects:
+      m_Length: 2
+      m_Item0:
+        transform: {fileID: 424222407997498711}
+        weight: 1
+      m_Item1:
+        transform: {fileID: 424222406702161832}
+        weight: 1
+      m_Item2:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item3:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item4:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item5:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item6:
+        transform: {fileID: 0}
+        weight: 0
+      m_Item7:
+        transform: {fileID: 0}
+        weight: 0
+    m_Offset: {x: 0, y: 0, z: 0}
+    m_ConstrainedAxes:
+      x: 1
+      y: 1
+      z: 1
+    m_MaintainOffset: 1
+  m_SourceObjectsGUIToggle: 1
+  m_SettingsGUIToggle: 1
+--- !u!114 &6489463044077331597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424222407739914489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41460ffc46102da4b94d409e34b74958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &424222407997498708
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424222407997498711}
   - component: {fileID: 424222407997498710}
+  - component: {fileID: 3441135093518864921}
   m_Layer: 0
   m_Name: IK Foot Left
   m_TagString: Untagged
@@ -381,13 +459,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424222407997498708}
-  m_LocalRotation: {x: -0.33633867, y: -0.56720275, z: -0.3840078, w: -0.6462935}
+  m_LocalRotation: {x: -0.0003279981, y: 0.6594245, z: 0.00028770737, w: 0.75177073}
   m_LocalPosition: {x: -0.896664, y: 0.35538125, z: -0.30269355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 424222407326921391}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.05, y: 82.512, z: 0}
 --- !u!114 &424222407997498710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +492,19 @@ MonoBehaviour:
     m_MaintainTargetRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
   m_SettingsGUIToggle: 0
+--- !u!114 &3441135093518864921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424222407997498708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4d501dc941efd41bc70db468b2b54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepOffset: 3.141592
 --- !u!1 &577535787583209384
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +546,8 @@ GameObject:
   - component: {fileID: 173843188249772897}
   - component: {fileID: 424222408233093277}
   - component: {fileID: 424222408233093276}
+  - component: {fileID: 2256622715828770866}
+  - component: {fileID: 4521269836149546605}
   m_Layer: 0
   m_Name: Goon
   m_TagString: Untagged
@@ -521,6 +614,45 @@ MonoBehaviour:
   - m_Rig: {fileID: 424222406782464818}
     m_Active: 1
   m_Effectors: []
+--- !u!143 &2256622715828770866
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658174093988698587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 5.35
+  m_Radius: 1.28
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 2.65, z: 0}
+--- !u!114 &4521269836149546605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658174093988698587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9110004e580801443bfad4d37368a64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  stepSpeed: 5
+  walkScale: {x: 0.65, y: 0.5, z: 0.75}
+  ankleRotationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &691031766372137429
 GameObject:
   m_ObjectHideFlags: 0
