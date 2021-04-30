@@ -2,45 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DudeController : MonoBehaviour
+namespace Hodgkins
 {
-    public enum States
+    public class DudeController : MonoBehaviour
     {
-        Idle,
-        Walk
-    }
+        public enum States
+        {
+            Idle,
+            Walk
+        }
 
-    private CharacterController pawn;
+        private CharacterController pawn;
 
-    public float moveSpeed = 5;
+        public float moveSpeed = 5;
 
-    public float stepSpeed = 5;
+        public float stepSpeed = 5;
 
-    public Vector3 walkScale = Vector3.one;
+        public Vector3 walkScale = Vector3.one;
 
-    public AnimationCurve ankleRotationCurve;
+        public AnimationCurve ankleRotationCurve;
 
-    public States state { get; private set; }
-    public Vector3 moveDir { get; private set; }
+        public bool isDead = false;
 
-    void Start()
-    {
-        state = States.Idle;
-        pawn = GetComponent<CharacterController>();
-    }
+        public States state { get; private set; }
+        public Vector3 moveDir { get; private set; }
+
+        void Start()
+        {
+            state = States.Idle;
+            pawn = GetComponent<CharacterController>();
+        }
 
 
-    void Update()
-    {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        void Update()
+        {
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
 
-        moveDir = transform.forward * v + transform.right * h;
-        if (moveDir.sqrMagnitude > 1) moveDir.Normalize();
+            moveDir = transform.forward * v + transform.right * h;
+            if (moveDir.sqrMagnitude > 1) moveDir.Normalize();
 
-        pawn.SimpleMove(moveDir * moveSpeed);
+            pawn.SimpleMove(moveDir * moveSpeed);
 
-        state = (moveDir.sqrMagnitude > .1f) ? States.Walk : States.Idle;
+            state = (moveDir.sqrMagnitude > .1f) ? States.Walk : States.Idle;
 
+            //if (HealthSystem.health <= 0) DeathAnim();
+
+        }
+
+        void DeathAnim()
+        {
+
+        }
     }
 }

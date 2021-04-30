@@ -1,75 +1,109 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ScorpionController : MonoBehaviour
+namespace Hodgkins
 {
-
-    public Transform groundRing;
-
-    public List<StickyFoot> feet = new List<StickyFoot>();
-
-    //CharacterController pawn;
-
-    private NavMeshAgent nav;
-
-    public Transform attackTarget;
-
-    void Start()
+    public class ScorpionController : MonoBehaviour
     {
-        //pawn = GetComponent<CharacterController>();
-        nav = GetComponent<NavMeshAgent>();
-    }
 
-    
-    void Update()
-    {
-        Move();
+        public Transform groundRing;
+
+        public Transform armL;
+
+        private Vector3 armLStartingPos;
+
+        public List<StickyFoot> feet = new List<StickyFoot>();
+
+        //CharacterController pawn;
+
+        private NavMeshAgent nav;
+
+        public Transform attackTarget;
+
+        private float disToTarget;
+
+        private Vector3 attackPos = new Vector3(-1.1f, 1.5f, 6);
 
 
-        int feetStepping = 0;
-        int feetMoved = 0;
-        foreach (StickyFoot foot in feet)
+        void Start()
         {
-            if (foot.isAnimating) feetStepping++;
-            if (foot.footHasMoved) feetMoved++;
+            //pawn = GetComponent<CharacterController>();
+            nav = GetComponent<NavMeshAgent>();
+            armLStartingPos = armL.localPosition;
         }
 
-        if(feetMoved >= 8)
+
+        void Update()
         {
+            Move();
+
+            CheckForAttack();
+
+            int feetStepping = 0;
+            int feetMoved = 0;
             foreach (StickyFoot foot in feet)
             {
-                foot.footHasMoved = false;
+                if (foot.isAnimating) feetStepping++;
+                if (foot.footHasMoved) feetMoved++;
             }
-        }
 
-        foreach (StickyFoot foot in feet)
-        {
-            if (feetStepping < 4)
+            if (feetMoved >= 8)
             {
-                if (foot.TryToStep()) feetStepping++;
+                foreach (StickyFoot foot in feet)
+                {
+                    foot.footHasMoved = false;
+                }
             }
+
+            foreach (StickyFoot foot in feet)
+            {
+                if (feetStepping < 4)
+                {
+                    if (foot.TryToStep()) feetStepping++;
+                }
+            }
+
         }
 
-    }
+        private void CheckForAttack()
+        {
+            disToTarget = Vector3.Distance(attackTarget.position, transform.position);
 
-    private void Move()
-    {
-        //float v = Input.GetAxisRaw("Vertical");
-        //float h = Input.GetAxisRaw("Horizontal");
-        if (attackTarget != null) nav.SetDestination(attackTarget.position);
+            if (disToTarget <= 7)
+            {
+                
+                armL.localPosition = AnimMath.Slide(armL.localPosition, attackPos, .01f);
+            }
 
-        Vector3 velocity = transform.forward;
-        //velocity.Normalize();
-        //pawn.SimpleMove(velocity * 5);
+            if(disToTarget > 7)
+            {
+                armL.localPosition = armLStartingPos;
+            }
+            
+        }
 
-        transform.Rotate(0,  90 * Time.deltaTime, 0);
+        private void Move()
+        {
+            //float v = Input.GetAxisRaw("Vertical");
+            //float h = Input.GetAxisRaw("Horizontal");
+            if (attackTarget != null) nav.SetDestination(attackTarget.position);
 
-        Vector3 localVelocity = groundRing.InverseTransformDirection(velocity);
+            Vector3 velocity = transform.forward;
+            //velocity.Normalize();
+            //pawn.SimpleMove(velocity * 5);
 
-        groundRing.localPosition = AnimMath.Slide(groundRing.localPosition, localVelocity * 3, .0001f);
+            transform.Rotate(0, 30 * Time.deltaTime, 0);
 
-        //groundRing.localEulerAngles = new Vector3(0, h * 30, 0);
+            Vector3 localVelocity = groundRing.InverseTransformDirection(velocity);
+
+            groundRing.localPosition = AnimMath.Slide(groundRing.localPosition, localVelocity * 2, .0001f);
+
+            //groundRing.localEulerAngles = new Vector3(0, h * 30, 0);
+        }
+
+        
     }
 }

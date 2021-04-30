@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthSystem : MonoBehaviour
+namespace Hodgkins
 {
-    public float health { get; private set; }
-    public float healthMax = 100;
-
-    private void Start()
+    public class HealthSystem : MonoBehaviour
     {
-        health = healthMax;
-    }
+        public float health { get; private set; }
+        public float healthMax = 100;
 
-    public void TakeDamage(float amt)
-    {
-        if (amt <= 0) return;
-        
-        health -= amt;
+        private void Start()
+        {
+            health = healthMax;
+        }
 
-        if (health <= 0) Die();
-    }
+        public void TakeDamage(float amt)
+        {
+            if (amt <= 0) return;
 
-    public void Die()
-    {
-        // removes this gameobject from the game
-        Destroy(gameObject);
+            health -= amt;
+
+            if (health <= 0) Die();
+        }
+
+        public void Die()
+        {
+            // removes this gameobject from the game
+            Destroy(gameObject);
+        }
     }
 }
