@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ScorpionController : MonoBehaviour
 {
@@ -9,18 +10,23 @@ public class ScorpionController : MonoBehaviour
 
     public List<StickyFoot> feet = new List<StickyFoot>();
 
-    CharacterController pawn;
+    //CharacterController pawn;
 
+    private NavMeshAgent nav;
+
+    public Transform attackTarget;
 
     void Start()
     {
-        pawn = GetComponent<CharacterController>();
+        //pawn = GetComponent<CharacterController>();
+        nav = GetComponent<NavMeshAgent>();
     }
 
     
     void Update()
     {
         Move();
+
 
         int feetStepping = 0;
         int feetMoved = 0;
@@ -50,14 +56,15 @@ public class ScorpionController : MonoBehaviour
 
     private void Move()
     {
-        float v = Input.GetAxisRaw("Vertical");
-        float h = Input.GetAxisRaw("Horizontal");
+        //float v = Input.GetAxisRaw("Vertical");
+        //float h = Input.GetAxisRaw("Horizontal");
+        if (attackTarget != null) nav.SetDestination(attackTarget.position);
 
-        Vector3 velocity = transform.forward * v;
+        Vector3 velocity = transform.forward;
         //velocity.Normalize();
-        pawn.SimpleMove(velocity * 5);
+        //pawn.SimpleMove(velocity * 5);
 
-        transform.Rotate(0, h * 90 * Time.deltaTime, 0);
+        transform.Rotate(0,  90 * Time.deltaTime, 0);
 
         Vector3 localVelocity = groundRing.InverseTransformDirection(velocity);
 

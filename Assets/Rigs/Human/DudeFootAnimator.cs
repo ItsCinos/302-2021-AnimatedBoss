@@ -53,8 +53,8 @@ public class DudeFootAnimator : MonoBehaviour
         }
 
         // ease position and rotation towards their targets
-        //position = AnimMath.Slide(transform.position, targetPos, .01f);
-        //transform.rotation = AnimMath.Slide(transform.rotation, targetRot, .01f);
+        transform.position = AnimMath.Slide(transform.position, targetPos, .01f);
+        transform.rotation = AnimMath.Slide(transform.rotation, targetRot, .01f);
 
     }
 
@@ -69,8 +69,7 @@ public class DudeFootAnimator : MonoBehaviour
 
         // vertical movement: (y)
         finalPos.y += Mathf.Cos(time) * dude.walkScale.y;
-
-        finalPos.x *= dude.walkScale.x;
+        //finalPos.x *= dude.walkScale.x;
 
         bool isOnGround = (finalPos.y < startingPos.y);
 
@@ -84,8 +83,9 @@ public class DudeFootAnimator : MonoBehaviour
         //transform.localPosition = finalPos;
         //transform.localRotation = Quaternion.Euler(0, 0, anklePitch);
 
-        targetPos = transform.TransformPoint(finalPos);
+        targetPos = transform.parent.TransformPoint(finalPos);
         targetRot = transform.parent.rotation * startingRot * Quaternion.Euler(0, 0, anklePitch);
+
 
     }
 
@@ -103,14 +103,14 @@ public class DudeFootAnimator : MonoBehaviour
     void FindGround()
     {
         Ray ray = new Ray(transform.position + new Vector3(0, .5f, 0), Vector3.down * 2);
-
+        
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            transform.position = hit.point;
-            transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            //transform.position = hit.point;
+            //transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
 
-            //targetPos = hit.point;
-            //targetRot = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            targetPos = hit.point;
+            targetRot = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
 
         }
         else

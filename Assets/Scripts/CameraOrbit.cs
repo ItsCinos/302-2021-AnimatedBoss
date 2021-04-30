@@ -61,7 +61,7 @@ public class CameraOrbit : MonoBehaviour
 
     private void ZoomCamera()
     {
-        float dis = 10;
+        float dis = 6;
         if (IsTargeting()) dis = 3;
 
         cam.transform.localPosition = AnimMath.Slide(cam.transform.localPosition, new Vector3(0, 0, -dis), .001f);
