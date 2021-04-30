@@ -103,7 +103,7 @@ namespace Hodgkins
             armL.position += -armL.forward * .1f;
             armR.position += -armR.forward * .1f;
 
-            // SoundEffectBoard.PlayPlayerShot();
+            SoundEffectBoard.PlayShot();
         }
 
         private bool CanSeeThing(Transform thing)

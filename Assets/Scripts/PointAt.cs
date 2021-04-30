@@ -15,6 +15,7 @@ namespace Hodgkins
         public bool lockRotationY;
         public bool lockRotationZ;
 
+
         void Start()
         {
             startingRotation = transform.localRotation;
@@ -35,9 +36,8 @@ namespace Hodgkins
             if (playerTargeting && playerTargeting.target && playerTargeting.wantsToTarget)
             {
                 Vector3 disToTarget = playerTargeting.target.position - transform.position;
-
-
-                Quaternion targetRotation = Quaternion.LookRotation(disToTarget, Vector3.up);
+                                
+                Quaternion targetRotation = Quaternion.LookRotation(disToTarget, Vector3.forward);
 
                 Vector3 euler1 = transform.localEulerAngles; // get local angles before rotation
                 Quaternion prevRot = transform.rotation;

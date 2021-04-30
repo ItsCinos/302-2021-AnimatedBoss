@@ -28,6 +28,7 @@ namespace Hodgkins
         void Update()
         {
             PlayerOrbitCamera();
+            PlayerOrbitCameraController();
 
             transform.position = moveScript.transform.position;
 
@@ -107,6 +108,33 @@ namespace Hodgkins
 
             yaw += mx * cameraSensitivityX;
             pitch += my * cameraSensitivityY;
+
+            if (IsTargeting()) // z-targeting
+            {
+                pitch = Mathf.Clamp(pitch, 15, 60);
+                //find player yaw
+                float playerYaw = moveScript.transform.eulerAngles.y;
+                // clamp camera-rig yaw to playerYaw +- 50
+                yaw = Mathf.Clamp(yaw, playerYaw - 50, playerYaw + 50);
+
+            }
+            else // not targeting / free look
+            {
+                pitch = Mathf.Clamp(pitch, -10, 89);
+
+            }
+
+
+            transform.rotation = AnimMath.Slide(transform.rotation, Quaternion.Euler(pitch, yaw, 0), .001f);
+        }
+
+        private void PlayerOrbitCameraController()
+        {
+            float mx = Input.GetAxisRaw("Look Horizontal");
+            float my = Input.GetAxisRaw("Look Vertical");
+
+            yaw += mx * cameraSensitivityX;
+            pitch -= my * cameraSensitivityY;
 
             if (IsTargeting()) // z-targeting
             {

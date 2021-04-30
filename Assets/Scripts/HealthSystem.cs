@@ -27,6 +27,7 @@ namespace Hodgkins
         {
             // removes this gameobject from the game
             Destroy(gameObject);
+            SoundEffectBoard.PlayDie();
         }
     }
 }

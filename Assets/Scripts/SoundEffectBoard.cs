@@ -14,6 +14,7 @@ namespace Hodgkins
         public AudioClip soundHit;
         public AudioClip soundDie;
         public AudioClip soundPunch;
+        public AudioClip soundThrownPunch;
 
         private AudioSource player;
 
@@ -46,6 +47,10 @@ namespace Hodgkins
         public static void PlayPunch()
         {
             main.player.PlayOneShot(main.soundPunch);
+        }
+        public static void PlayThrownPunch()
+        {
+            main.player.PlayOneShot(main.soundThrownPunch);
         }
     }
 }

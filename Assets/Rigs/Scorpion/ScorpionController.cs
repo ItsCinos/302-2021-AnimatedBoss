@@ -73,9 +73,9 @@ namespace Hodgkins
             disToTarget = Vector3.Distance(attackTarget.position, transform.position);
 
             if (disToTarget <= 7)
-            {
-                
+            {                
                 armL.localPosition = AnimMath.Slide(armL.localPosition, attackPos, .01f);
+                //SoundEffectBoard.PlayThrownPunch();
             }
 
             if(disToTarget > 7)
