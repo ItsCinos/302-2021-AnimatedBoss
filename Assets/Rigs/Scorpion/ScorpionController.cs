@@ -8,6 +8,7 @@ namespace Hodgkins
 {
     public class ScorpionController : MonoBehaviour
     {
+        public float speed;
 
         public Transform groundRing;
 
@@ -76,6 +77,7 @@ namespace Hodgkins
             {                
                 armL.localPosition = AnimMath.Slide(armL.localPosition, attackPos, .01f);
                 //SoundEffectBoard.PlayThrownPunch();
+                nav.speed = 2;
             }
 
             if(disToTarget > 7)
@@ -90,6 +92,8 @@ namespace Hodgkins
             //float v = Input.GetAxisRaw("Vertical");
             //float h = Input.GetAxisRaw("Horizontal");
             if (attackTarget != null) nav.SetDestination(attackTarget.position);
+
+            if (disToTarget > 15) nav.speed = 7; // if the player reaches a certain distance away from the boss, the boss speeds up
 
             Vector3 velocity = transform.forward;
             //velocity.Normalize();

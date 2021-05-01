@@ -25,7 +25,7 @@ namespace Hodgkins
             cam = GetComponentInChildren<Camera>();
         }
 
-        void Update()
+        void LateUpdate()
         {
             PlayerOrbitCamera();
             PlayerOrbitCameraController();

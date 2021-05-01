@@ -37,7 +37,7 @@ namespace Hodgkins
             {
                 Vector3 disToTarget = playerTargeting.target.position - transform.position;
                                 
-                Quaternion targetRotation = Quaternion.LookRotation(disToTarget, Vector3.forward);
+                Quaternion targetRotation = Quaternion.LookRotation(disToTarget, Vector3.zero);
 
                 Vector3 euler1 = transform.localEulerAngles; // get local angles before rotation
                 Quaternion prevRot = transform.rotation;

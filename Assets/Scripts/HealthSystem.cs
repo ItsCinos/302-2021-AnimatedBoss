@@ -20,7 +20,7 @@ namespace Hodgkins
 
             health -= amt;
 
-            if (health <= 0) Die();
+            //if (health <= 0) Die();
         }
 
         public void Die()

@@ -27,6 +27,13 @@ namespace Hodgkins
         private Vector3 startPosArmL;
         private Vector3 startPosArmR;
 
+        /// <summary>
+        /// A reference to the particle system prefab
+        /// </summary>
+        public ParticleSystem prefabMuzzleFlash;
+        public Transform handR;
+        public Transform handL;
+
         CameraOrbit camOrbit;
 
         void Start()
@@ -92,8 +99,8 @@ namespace Hodgkins
 
             camOrbit.Shake(.5f);
 
-            //if (handL) Instantiate(prefabMuzzleFlash, handL.position, handL.rotation);
-            //if (handR) Instantiate(prefabMuzzleFlash, handR.position, handR.rotation);
+            if (handL) Instantiate(prefabMuzzleFlash, handL.position, handL.rotation);
+            if (handR) Instantiate(prefabMuzzleFlash, handR.position, handR.rotation);
 
             // moves arms up
             armL.localEulerAngles += new Vector3(-20, 0, 0);

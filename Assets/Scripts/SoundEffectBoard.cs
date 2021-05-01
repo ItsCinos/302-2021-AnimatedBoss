@@ -11,10 +11,11 @@ namespace Hodgkins
         //public AudioClip soundJump;
         //public AudioClip soundSpring;
         public AudioClip soundShot;
-        public AudioClip soundHit;
+        public AudioClip soundJump;
         public AudioClip soundDie;
         public AudioClip soundPunch;
         public AudioClip soundThrownPunch;
+        public AudioClip soundSong;
 
         private AudioSource player;
 
@@ -35,9 +36,9 @@ namespace Hodgkins
             main.player.PlayOneShot(main.soundShot);
         }
 
-        public static void PlayHit()
+        public static void PlayJump()
         {
-            main.player.PlayOneShot(main.soundHit);
+            main.player.PlayOneShot(main.soundJump);
         }
 
         public static void PlayDie()
@@ -51,6 +52,10 @@ namespace Hodgkins
         public static void PlayThrownPunch()
         {
             main.player.PlayOneShot(main.soundThrownPunch);
+        }
+        public static void PlaySong()
+        {
+            main.player.PlayOneShot(main.soundSong);
         }
     }
 }

@@ -2914,6 +2914,8 @@ GameObject:
   - component: {fileID: 8515788742581931510}
   - component: {fileID: 3881418982782887863}
   - component: {fileID: 2099401737}
+  - component: {fileID: 479560421}
+  - component: {fileID: 479560420}
   m_Layer: 0
   m_Name: Scorpion Boss
   m_TagString: Untagged
@@ -3092,6 +3094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e290788e5c1394ea63699f2fd201b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   groundRing: {fileID: 98478628}
   armL: {fileID: 6042159799180702921}
   feet:
@@ -3126,6 +3129,33 @@ NavMeshAgent:
   m_BaseOffset: 1.33
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &479560421
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266044931823643026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.94
+  m_Height: 6.82
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -1.5}
+--- !u!114 &479560420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266044931823643026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55504cee487f6fc4f8a0d8ef9d58dea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 3000
 --- !u!1 &5380844196872517387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,10 +3437,70 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.012644062, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1801645668005993645}
   m_Father: {fileID: 8713127338374121393}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5909809062446242242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801645668005993645}
+  - component: {fileID: 5238051255662738176}
+  - component: {fileID: 5031948126829171978}
+  m_Layer: 0
+  m_Name: Tail HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1801645668005993645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5909809062446242242}
+  m_LocalRotation: {x: -0.69748944, y: -0.0000005979974, z: -0.0000005820537, w: 0.7165951}
+  m_LocalPosition: {x: -0.0018400026, y: 0.00082300603, z: 0.0015754467}
+  m_LocalScale: {x: 0.01, y: 0.010000004, z: 0.0100000035}
+  m_Children: []
+  m_Father: {fileID: 2965146664035467104}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5238051255662738176
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5909809062446242242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.28
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5031948126829171978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5909809062446242242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 071ac693712fd694d9251cda3c8ed8c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 50
 --- !u!1 &6030507706226370034
 GameObject:
   m_ObjectHideFlags: 0
